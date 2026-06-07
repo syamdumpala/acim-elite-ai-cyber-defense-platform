@@ -1,0 +1,393 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   ACIM ELITE v14 – SINGULARITY DOMINANCE
+========================================================= */
+
+/* ================= ROOT VARIABLES ================= */
+
+:root {
+  --bg-primary: #05070E;
+  --bg-secondary: #0B0F1A;
+  --bg-tertiary: #111827;
+
+  --accent-blue: #00F5FF;
+  --accent-purple: #8B5CF6;
+  --accent-red: #FF3B3B;
+  --accent-green: #00FF99;
+  --accent-yellow: #FACC15;
+
+  --danger-glow: 0 0 90px rgba(255,0,0,0.8);
+  --safe-glow: 0 0 50px rgba(0,255,153,0.8);
+
+  --border-default: rgba(255,255,255,0.06);
+}
+
+/* ================= GLOBAL BASE ================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body, #root {
+  min-height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at center, #0B0F1A 0%, #05070E 75%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  color: #E5E7EB;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ================= NEURAL BACKGROUND ================= */
+
+.neural-bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.05), transparent 70%);
+  animation: neuralPulse 3s infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes neuralPulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.2; }
+}
+
+/* ================= CYBER GRID BACKGROUND ================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 60s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gridMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(40px); }
+}
+
+/* ================= BOOT SCREEN ================= */
+
+.boot-screen {
+  height: 100vh;
+  background: black;
+  color: var(--accent-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-family: monospace;
+  animation: fadeIn 2s ease;
+}
+
+.boot-final {
+  margin-top: 20px;
+  font-size: 20px;
+  color: var(--accent-red);
+  text-shadow: 0 0 20px red;
+}
+
+/* ================= HEADER ================= */
+
+.command-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  backdrop-filter: blur(20px);
+  background: rgba(5, 7, 14, 0.95);
+  border-bottom: 1px solid rgba(0,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+/* Scan Line */
+.command-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00F5FF, transparent);
+  animation: headerScan 3s linear infinite;
+}
+
+@keyframes headerScan {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ================= THREAT BADGE ================= */
+
+.threat-badge {
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: bold;
+  animation: pulseBadge 2s infinite;
+}
+
+.stable { background: rgba(0,255,153,0.2); color: #00FF99; }
+.elevated { background: rgba(250,204,21,0.2); color: #FACC15; }
+.critical { background: rgba(255,59,59,0.2); color: #FF3B3B; }
+.lockdown {
+  background: rgba(255,0,0,0.3);
+  color: #ff0000;
+  box-shadow: 0 0 20px red;
+}
+
+@keyframes pulseBadge {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* ================= TOP BUTTONS ================= */
+
+.top-btn {
+  background: transparent;
+  border: 1px solid var(--accent-blue);
+  color: var(--accent-blue);
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.top-btn:hover {
+  background: var(--accent-blue);
+  color: black;
+}
+
+.war-btn {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+}
+
+.war-btn.armed {
+  background: linear-gradient(90deg, #ff0000, #ff3b3b);
+  color: white;
+  box-shadow: 0 0 50px red;
+  animation: armedPulse 1s infinite alternate;
+}
+
+@keyframes armedPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+/* ================= MAIN SHELL ================= */
+
+.soc-shell {
+  min-height: 100vh;
+  padding-top: 90px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= WAR MODE ================= */
+
+.war-mode {
+  background: black;
+  animation: warDistort 1.2s infinite alternate;
+}
+
+@keyframes warDistort {
+  from { filter: brightness(1) contrast(1); }
+  to { filter: brightness(1.2) contrast(1.3); }
+}
+
+.war-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 70%);
+  pointer-events: none;
+  animation: auraPulse 1.5s infinite;
+  z-index: 1;
+}
+
+@keyframes auraPulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.3; }
+}
+
+/* ================= PARTICLE STORM ================= */
+
+.particle-storm {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,0,0,0.1),
+    rgba(255,0,0,0.1) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  animation: stormMove 1s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes stormMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(50px); }
+}
+
+/* ================= GLASS PANELS ================= */
+
+.glass-panel {
+  position: relative;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-default);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 0 40px rgba(0,255,255,0.1);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.glass-panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 100px rgba(0,255,255,0.4);
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(120deg, #00F5FF, #8B5CF6, #00F5FF);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 6s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* ================= METRICS ================= */
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.metric strong {
+  color: var(--accent-blue);
+  text-shadow: 0 0 10px rgba(0,255,255,0.6);
+}
+
+/* ================= CORE + ATTACK NODES ================= */
+
+.core-node {
+  animation: corePulse 2s infinite;
+  filter: drop-shadow(0 0 20px var(--accent-blue));
+}
+
+.attack-node {
+  animation: attackPulse 1.5s infinite;
+  filter: drop-shadow(0 0 10px var(--accent-red));
+}
+
+@keyframes corePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.6); }
+  100% { transform: scale(1); }
+}
+
+@keyframes attackPulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(2); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ================= TACTICAL CONSOLE ================= */
+
+.tactical-console {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(5,7,14,0.97);
+  border-top: 1px solid rgba(0,255,255,0.3);
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+.console-line {
+  padding: 6px 20px;
+  font-size: 12px;
+  font-family: monospace;
+  animation: fadeIn 0.5s ease;
+}
+
+.console-line::after {
+  content: " ▌";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent-blue), var(--accent-purple));
+  border-radius: 6px;
+  box-shadow: 0 0 10px var(--accent-blue);
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ACIM Elite Title -->
+  <title>ACIM ELITE CYBER COMMAND</title>
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0B0F1A" />
+  <meta name="description" content="Adaptive Cyber Immune Mesh - Elite Command Center" />
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Referrer-Policy" content="no-referrer" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Elite Styling -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #111827 0%, #0B0F1A 60%, #05070E 100%);
+      color: #E5E7EB;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+    }
+
+    #root {
+      height: 100%;
+      width: 100%;
+    }
+
+    /* Loading Screen */
+    #loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0B0F1A;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    .pulse {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #3B82F6;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 40px #3B82F6;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.8); opacity: 0.6; }
+    }
+
+    .loading-text {
+      margin-top: 20px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Elite Loader -->
+  <div id="loader">
+    <div class="pulse"></div>
+    <div class="loading-text">INITIALIZING ACIM ELITE</div>
+  </div>
+
+  <!-- React Root -->
+  <div id="root"></div>
+
+  <!-- Disable Right Click (Command Center Mode) -->
+  <script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+  </script>
+
+  <!-- Remove Loader When App Mounts -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const checkReactReady = setInterval(() => {
+        const root = document.getElementById("root");
+        if (root && root.children.length > 0) {
+          document.getElementById("loader").style.display = "none";
+          clearInterval(checkReactReady);
+        }
+      }, 100);
+    });
+  </script>
+
+  <!-- Vite Entry -->
+  <script type="module" src="/src/main.jsx"></script>
+
+</body>
+</html>

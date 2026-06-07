@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ===================================================== -->
+    <!-- BASIC META CONFIG -->
+    <!-- ===================================================== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACIM ELITE CYBER COMMAND</title>
+    <meta name="description" content="Adaptive Cyber Immune Mesh - Elite Industry Defense System" />
+
+    <!-- ===================================================== -->
+    <!-- GOOGLE FONTS (CYBER STYLE) -->
+    <!-- ===================================================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- ===================================================== -->
+    <!-- GLOBAL STYLES -->
+    <!-- ===================================================== -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
+        font-family: 'Inter', sans-serif;
+        background: #0a0f1c;
+        overflow: hidden;
+      }
+
+      /* Animated Cyber Gradient Background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at 20% 20%, #00f5ff33, transparent 40%),
+                    radial-gradient(circle at 80% 80%, #8b5cf633, transparent 40%),
+                    radial-gradient(circle at 50% 50%, #0ea5e933, transparent 50%);
+        animation: rotateBG 20s linear infinite;
+        z-index: -1;
+      }
+
+      @keyframes rotateBG {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      #root {
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Smooth Scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Cyber Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #00f5ff, #8b5cf6);
+        border-radius: 10px;
+      }
+
+      /* Loading Screen */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: #0a0f1c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 9999;
+      }
+
+      .loader-text {
+        font-family: 'Orbitron', sans-serif;
+        color: #00f5ff;
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% { opacity: 0.3; }
+        50% { opacity: 1; }
+        100% { opacity: 0.3; }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ===================================================== -->
+    <!-- LOADING SCREEN -->
+    <!-- ===================================================== -->
+    <div id="loader">
+      <div class="loader-text">INITIALIZING ACIM ELITE...</div>
+    </div>
+
+    <!-- React Mount Point -->
+    <div id="root"></div>
+
+    <!-- ===================================================== -->
+    <!-- REMOVE LOADER WHEN REACT LOADS -->
+    <!-- ===================================================== -->
+    <script>
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        if (loader) {
+          loader.style.opacity = "0";
+          loader.style.transition = "opacity 0.8s ease";
+          setTimeout(() => loader.remove(), 800);
+        }
+      });
+    </script>
+
+    <!-- ===================================================== -->
+    <!-- VITE ENTRY POINT -->
+    <!-- ===================================================== -->
+    <script type="module" src="/src/main.jsx"></script>
+
+  </body>
+</html>
